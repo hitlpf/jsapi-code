@@ -24,9 +24,9 @@ const SearchBox: React.FC = () => {
         type="text"
         value={inputValue} // 将 inputValue 状态绑定到输入框的 value 属性
         onChange={changeHandle} // 设置 onChange 事件处理函数
-        placeholder="请输入"
+        placeholder="请输入jsapi(多个用,分隔, 比如: search.openGifBrowser,search.startNBALiveActivity)"
       />
-      <p>返回的值是: {newValue}</p>
+      <p>返回信息: {newValue}</p>
       <span className={styles.button} onClick={clickHandle}>提交</span>
     </div>
   );

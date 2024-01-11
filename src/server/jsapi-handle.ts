@@ -131,7 +131,7 @@ export default async function (ctx: any) {
   
   fs.writeFileSync(path.resolve(__dirname, '../../src/data/jsapi_ppvn_define_map.txt'), [...linesIOS, ...linesAndroid].join('\n'));
 
-  shell.exec(`rsync -avz ${path.resolve(__dirname, '../../src/data/jsapi_ppvn_define_map.txt')} ${path.resolve(__dirname, '../jsapiHandle')}`);
+  shell.exec(`rsync -avz ${path.resolve(__dirname, '../../src/data/jsapi_ppvn_define_map.txt')} /search/odin/daemon/wap_server/`);
 
-  return '文件生成成功';
+  return 'jsapi文件生成成功, 并已经同步至ot环境';
 }

@@ -1,2 +1,1 @@
-search.openGifBrowser
-search.startNBALiveActivity
+search.openGifBrowser,search.startNBALiveActivity
