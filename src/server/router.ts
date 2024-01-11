@@ -17,6 +17,8 @@ router.get('/getInfo', async (ctx, next) => {
 
   let key: any = '';
   let result = '';
+  console.log('ctx------');
+  console.log(ctx);
 
   try {
     ({ key } = ctx.query);
