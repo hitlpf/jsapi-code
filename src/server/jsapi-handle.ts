@@ -46,7 +46,13 @@ export default async function (ctx: any) {
   // 在使用的jsapi的分组
   const jsapiGroups = [...new Set(jsapiSplit.map((jsapisplit: any) => jsapisplit[0]))];
   // 通过接口拉取所有的jsapi的版本映射关系和define code
-  const unauthListJson = await request('GET', 'http://exp.qbjsapi.oa.com/unauth/api/list');
+  let unauthListJson = {};
+  try {
+    unauthListJson = await request('GET', 'http://exp.qbjsapi.oa.com/unauth/api/list');
+  } catch (error) {
+    console.log(error);
+  }
+  
   // const jsapiJson = JSON.parse(fs.readFileSync(path.resolve(__dirname, './unauth_list.json'), "utf-8"));
   const jsapiJson = unauthListJson.data;
   // 先过滤出在使用的group
