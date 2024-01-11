@@ -15,9 +15,15 @@ router.get('/', async (ctx, next) => {
 router.get('/getInfo', async (ctx, next) => {
   await next();
 
-  const { key } = ctx.query;
+  let key: any = '';
+  let result = '';
 
-  const result = await jsapiHandle(ctx);
+  try {
+    ({ key } = ctx.query);
+    result = await jsapiHandle(ctx);
+  } catch (error) {
+    console.log(error);
+  }
 
   // 返回结果
   ctx.set('content-type', 'application/json; charset=utf-8');
