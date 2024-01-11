@@ -1,0 +1,21 @@
+.title {
+  color: blue;
+  margin-bottom: 20px;
+}
+
+.abstract {
+  color:chocolate;
+}
+
+.search-box {
+  margin-top: 20px;
+  padding: 10px 10px;
+  border: 1px solid #000;
+}
+
+.search-box .button{
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 2px 5px;
+  background-color:mediumaquamarine;
+}

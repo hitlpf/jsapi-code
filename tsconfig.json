@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "module": "commonjs", // tsc转译的模块方式
+    "target": "es6", // tsc转译的目标版本
+    "outDir": "./dist", // tsc转译后的输出目录
+    "jsx": "react", // 将JSX转换为React.createElement
+    "esModuleInterop": true, // 这意味着可以使用 import 语句来导入 CommonJS 模块
+    "strict": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "allowSyntheticDefaultImports": true,
+  },
+  "include": ["global.d.ts", "declaration.d.ts", "src/**/*"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
+}

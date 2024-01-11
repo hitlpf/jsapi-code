@@ -1,0 +1,3 @@
+iOS	search.openGifBrowser	14.7.5	browser.define("browser.search.openGifBrowser",function(succCallback,errCallback,options){x5.exec(succCallback,errCallback||function(){},"search","openGifBrowser",[options]);});
+android	search.openGifBrowser	14.7.5	browser.define("browser.search.openGifBrowser",function(succCallback,errCallback,options){qb_bridge.exec(succCallback,errCallback,"search","openGifBrowser",options);});
+iOS	search.startNBALiveActivity	14.7.5	browser.define("browser.search.startNBALiveActivity",function(succCallback,errCallback,options){x5.exec(succCallback,errCallback||function(){},"search","startNBALiveActivity",[options]);});
