@@ -15,7 +15,7 @@ import './style.css';
 
 const App: React.FC<AppProps> = (props: AppProps) => (
   <div className={classNames(styles.reactSSRContainer, 'main-body')}>
-    <Title text={`jsapi文件制作`}/>
+    <Title text={`jsapi代码生成`}/>
     <SearchBox/>
   </div>
 );

@@ -26,7 +26,7 @@ const SearchBox: React.FC = () => {
         onChange={changeHandle} // 设置 onChange 事件处理函数
         placeholder="请输入jsapi(多个用,分隔, 比如: search.openGifBrowser,search.startNBALiveActivity)"
       />
-      <p>返回信息: {newValue}</p>
+      <p>返回提示: {newValue}</p>
       <span className={styles.button} onClick={clickHandle}>提交</span>
     </div>
   );
