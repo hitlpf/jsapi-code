@@ -46,10 +46,8 @@ export default async function (ctx: any) {
   // 在使用的jsapi的分组
   const jsapiGroups = [...new Set(jsapiSplit.map((jsapisplit: any) => jsapisplit[0]))];
   // 通过接口拉取所有的jsapi的版本映射关系和define code
-  let unauthListJson = {};
-  
-  // const jsapiJson = JSON.parse(fs.readFileSync(path.resolve(__dirname, './unauth_list.json'), "utf-8"));
-  const jsapiJson = unauthListJson.data;
+  const jsapiJson = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../../src/data/unauth_list.json'), "utf-8"));
+  // const jsapiJson = unauthListJson.data;
   // 先过滤出在使用的group
   const jsapiAllGroups = jsapiJson.data.filter((group: any) => jsapiGroups.includes(group.groupName));
   let allapi = jsapiAllGroups.map((jsapiObj: any) => {
@@ -132,7 +130,7 @@ export default async function (ctx: any) {
   
   fs.writeFileSync(path.resolve(__dirname, '../../src/data/jsapi_ppvn_define_map.txt'), [...linesIOS, ...linesAndroid].join('\n'));
 
-  shell.exec(`rsync -avz ${path.resolve(__dirname, '../../src/data/jsapi_ppvn_define_map.txt')} /search/odin/daemon/wap_server/`);
+  // shell.exec(`rsync -avz ${path.resolve(__dirname, '../../src/data/jsapi_ppvn_define_map.txt')} /search/odin/daemon/wap_server/`);
 
   return 'jsapi文件生成成功, 并已经同步至ot环境';
 }
