@@ -46,7 +46,7 @@ export default async function (ctx: any) {
   // 在使用的jsapi的分组
   const jsapiGroups = [...new Set(jsapiSplit.map((jsapisplit: any) => jsapisplit[0]))];
   // 通过接口拉取所有的jsapi的版本映射关系和define code
-  const jsapiJson = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../../src/data/unauth_list.json'), "utf-8"));
+  const jsapiJson = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../../../jsapi-data/unauth_list.json'), "utf-8"));
   // const jsapiJson = unauthListJson.data;
   // 先过滤出在使用的group
   const jsapiAllGroups = jsapiJson.data.filter((group: any) => jsapiGroups.includes(group.groupName));
@@ -108,12 +108,12 @@ export default async function (ctx: any) {
     console.log(`android\t${jsapi.apiName}\t${androidPpvn}\t${androidCode}`);
   });
 
-  fs.writeFileSync(path.resolve(__dirname, '../../src/data/jsapiDefineMap.txt'), lines.join('\n'));
+  fs.writeFileSync(path.resolve(__dirname, '../../../jsapi-data/jsapiDefineMap.txt'), lines.join('\n'));
 
 
   // 重新排序
-  let jsapiLinesCurrent = fs.readFileSync(path.resolve(__dirname, '../../src/data/jsapi_ppvn_define_map.txt'), "utf-8").split('\n');
-  let jsapiLinesNew = fs.readFileSync(path.resolve(__dirname, '../../src/data/jsapiDefineMap.txt'), "utf-8").split('\n');
+  let jsapiLinesCurrent = fs.readFileSync(path.resolve(__dirname, '../../../jsapi-data/jsapi_ppvn_define_map.txt'), "utf-8").split('\n');
+  let jsapiLinesNew = fs.readFileSync(path.resolve(__dirname, '../../../jsapi-data/jsapiDefineMap.txt'), "utf-8").split('\n');
   
   let linesIOS: any = [];
   let linesAndroid: any = [];
@@ -128,9 +128,9 @@ export default async function (ctx: any) {
   linesIOS = sortFun(linesIOS).map((line: any) => line.join('\t'));;
   linesAndroid = sortFun(linesAndroid).map((line: any) => line.join('\t'));;
   
-  fs.writeFileSync(path.resolve(__dirname, '../../src/data/jsapi_ppvn_define_map.txt'), [...linesIOS, ...linesAndroid].join('\n'));
+  fs.writeFileSync(path.resolve(__dirname, '../../../jsapi-data/jsapi_ppvn_define_map.txt'), [...linesIOS, ...linesAndroid].join('\n'));
 
-  shell.exec(`rsync -avz ${path.resolve(__dirname, '../../src/data/jsapi_ppvn_define_map.txt')} /search/odin/daemon/wap_server/data/update/`);
+  shell.exec(`rsync -avz ${path.resolve(__dirname, '../../../jsapi-data/jsapi_ppvn_define_map.txt')} /search/odin/daemon/wap_server/data/update/`);
 
   return 'jsapi文件生成成功, 并已经同步至ot环境';
 }
