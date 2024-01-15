@@ -1,7 +1,7 @@
 {
   "apps": [
     {
-      "name": "workbench",
+      "name": "jsapiService",
       "script": "./dist/server/index.js",
       "instances": 1,
       "exec_mode": "cluster",
