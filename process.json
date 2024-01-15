@@ -2,16 +2,7 @@
   "apps": [
     {
       "name": "jsapiService",
-      "script": "./dist/server/index.js",
-      "instances": 1,
-      "exec_mode": "cluster",
-      "out_file": "../logs/.pm2/jsapi-code-out.log",
-      "error_file": "../logs/.pm2/jsapi-code-error.log",
-      "max_memory_restart": "40000M",
-      "env": {
-          "NODE_ENV": "production"
-      },
-      "instance_var": "INSTANCE_ID"
+      "script": "./dist/server/index.js"
     }
   ]
 }
