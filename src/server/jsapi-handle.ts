@@ -82,7 +82,7 @@ export default async function (ctx: any) {
           return support.platform === 1 ? 'ios' : 'android';
         });
         Object.keys(codes).forEach((key: any) => {
-          codes[key] = codes[key][0].code?.replace(/\n/g, '').replace(/\s/g, '');
+          codes[key] = codes[key][0].code?.replace(/\n/g, '').replace(/\t/g, '');
         });
       } catch (error) {}
 
