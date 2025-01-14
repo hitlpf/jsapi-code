@@ -3,6 +3,7 @@
 const fs = require('fs'); 
 const path = require('path');
 const shell = require('shelljs');
+const axios = require('axios');
 const { groupBy } = require('lodash');
 
 const args = process.argv.slice(2);
@@ -33,6 +34,10 @@ function sortFun(lines: any) {
   return lineList;
 }
 
+const request = (method: any, url: any) => {
+  return axios({ method, url });
+}
+
 // 文件前缀
 const filePrefix = '../../../jsapi-data';
 
@@ -43,6 +48,18 @@ export default async function (ctx: any) {
   const jsapiSplit = jsapiUsed.map((jsapi: any) => jsapi.split('.'));
   // 在使用的jsapi的分组
   const jsapiGroups = [...new Set(jsapiSplit.map((jsapisplit: any) => jsapisplit[0]))];
+  let unauthListJson = '';
+  try {
+    unauthListJson = await request('GET', 'http://exp.qbjsapi.oa.com/unauth/api/list');
+  } catch (error) {
+    console.log(error);
+  }
+  
+  // 写入一个文件备份
+  if (unauthListJson.data) {
+    fs.writeFileSync(path.resolve(__dirname, `${filePrefix}/unauth_list.json`), JSON.stringify(unauthListJson.data));
+  }
+
   // 通过接口拉取所有的jsapi的版本映射关系和define code
   const jsapiJson = JSON.parse(fs.readFileSync(path.resolve(__dirname, `${filePrefix}/unauth_list.json`), "utf-8"));
   // const jsapiJson = unauthListJson.data;
